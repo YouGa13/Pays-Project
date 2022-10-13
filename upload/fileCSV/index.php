@@ -2,6 +2,7 @@
 require_once("../../bdd/index.php");
 try {
     $dbh = new PDO($dsn, $user, $pwd);
+    $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 ?>
 
@@ -71,18 +72,18 @@ try {
                     $file_destination = 'C:\xampp_djibril\htdocs\Pays Project\upload\fileCSV\a' . $file_name_new;
                     if (move_uploaded_file($file_tmp_name, $file_destination)) {
                         try {
-                            $dbh->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
                                 if ($csv_file = fopen($file_destination, 'r')) {
                                     while ($line = fgetcsv($csv_file, 0, ",")) {
                                         $sql = $dbh->prepare("INSERT INTO $table_name (id, nom, code) VALUES (:id, :nom, :code)");
                                         $sql->execute([
-                                            'id' => $line[0],
-                                            'nom' => $line[1],
-                                            'code' => $line[2],
+                                            'id' => htmlspecialchars($line[0]),
+                                            'nom' => htmlspecialchars($line[1]),
+                                            'code' => htmlspecialchars($line[2]),
                                         ]);
                                     }
                                     fclose($csv_file);
                                     unlink($file_destination);
+                                    echo "fichier enregistré";
                                 } else {
                                     printf('<p class="error">Le fichier <samp>%s</samp> ne peut pas être ouvert en lecture.</p>' . "\n", $file_destination);
                                 }
