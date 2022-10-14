@@ -80,19 +80,21 @@ try {
                             foreach ($files as $file) {
                                 if ($file != '.' && $file != '..') {
                                     $file_path = __DIR__ . '\\flags\\flags\\' . $file;
-                                    $fileName = explode('.', basename($file_path));
+                                    $last_file = basename($file_path);
+                                    $fileName = explode('.', $last_file);
                                     $contryCode = $fileName[0];
-                                    $img = file_get_contents($file_path);
-                                    if (isset($img)){
-                                        $sql = $GLOBALS['dbh']->prepare("UPDATE $table_name SET drapeau = ? WHERE code = ?");
-                                        $sql->execute([$img, $contryCode]);
+                                   // $img = file_get_contents($file_path); pour mettre l'image dans la base de données
+                                    if (isset($file_path)){
+                                        $sql = $dbh->prepare("UPDATE $table_name SET drapeau = ? WHERE code = ?");
+                                       // $sql->execute([$img, $contryCode]);
+                                       $sql->execute([$file_path, $contryCode]);
                                     }
                                 }
                             }
                             echo "<p class='success'>Le fichier $file_name a été uploadé avec succès</p>";
                             unlink($file_destination);
                             array_map('unlink', glob("flags/*.*"));
-                            rmdir('flags\\flags');
+                          //  rmdir("\\flags\\flags");
                         } else {
                             printf('<p class="error">Le fichier <samp>%s</samp> ne peut pas être ouvert en lecture.</p>' . "\n", $file_destination);
                         }
