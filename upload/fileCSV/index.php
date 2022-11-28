@@ -16,25 +16,25 @@ try {
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-    <header>
+<header>
         <nav id="entete">
             <ul id="parent">
                 <li class="parentLi">
-                    <img src="../../logo/logo.jpg" alt="ma photo"> 
+                    <img src="./logo/logo.jpg" alt="ma photo"> 
                 </li>
                 <li id="children">
                     <ul id="childrenUl">
                         <li class="childrenLi">
-                            <a href="../index.php">Acceuil</a>
+                            <a href="../../index.php">Acceuil</a>
                         </li>
                         <li class="childrenLi">
-                            <a href="test.html">Envoyer le fichier CSV</a>
+                            <a href="../fileCSV/index.php">Envoyer le fichier CSV</a>
                         </li>
                         <li class="childrenLi">
-                            <a href="">Envoyer le fichier Zip</a>
+                            <a href="../fileFLAGS/index.php">Envoyer le fichier Zip</a>
                         </li>
                         <li class="childrenLi">
-                            <a href="">Liste des pays</a>
+                            <a href="../../paysList/index.php">Liste des pays</a>
                         </li>
                         <li class="childrenLi">
                             <a href="">A propos du site</a>
@@ -69,7 +69,7 @@ try {
             if ($file_error === 0) {
                 if ($file_size <= 2097152) {
                     $file_name_new = uniqid('', true) . '.' . $file_ext; // uniqid() génère un identifiant unique
-                    $file_destination = 'C:\xampp_djibril\htdocs\Pays Project\upload\fileCSV\a' . $file_name_new;
+                    $file_destination = 'C:\Users\dessi\xampp\htdocs\Pays Project\upload\fileCSV\a' . $file_name_new;
                     if (move_uploaded_file($file_tmp_name, $file_destination)) {
                         try {
                                 if ($csv_file = fopen($file_destination, 'r')) {

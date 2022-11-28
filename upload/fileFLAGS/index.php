@@ -16,25 +16,25 @@ try {
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-    <header>
+<header>
         <nav id="entete">
             <ul id="parent">
                 <li class="parentLi">
-                    <img src="../../logo/logo.jpg" alt="ma photo"> 
+                    <img src="./logo/logo.jpg" alt="ma photo"> 
                 </li>
                 <li id="children">
                     <ul id="childrenUl">
                         <li class="childrenLi">
-                            <a href="../index.php">Acceuil</a>
+                            <a href="index.php">Acceuil</a>
                         </li>
                         <li class="childrenLi">
-                            <a href="test.html">Envoyer le fichier CSV</a>
+                            <a href="../fileCSV/index.php">Envoyer le fichier CSV</a>
                         </li>
                         <li class="childrenLi">
-                            <a href="">Envoyer le fichier Zip</a>
+                            <a href="../fileFLAGS/index.php">Envoyer le fichier Zip</a>
                         </li>
                         <li class="childrenLi">
-                            <a href="">Liste des pays</a>
+                            <a href="../../paysList/index.php">Liste des pays</a>
                         </li>
                         <li class="childrenLi">
                             <a href="">A propos du site</a>
@@ -94,7 +94,7 @@ try {
                             echo "<p class='success'>Le fichier $file_name a été uploadé avec succès</p>";
                             unlink($file_destination);
                             array_map('unlink', glob("flags/*.*"));
-                          //  rmdir("\\flags\\flags");
+                           rmdir(__DIR__."\\flags\\flags");
                         } else {
                             printf('<p class="error">Le fichier <samp>%s</samp> ne peut pas être ouvert en lecture.</p>' . "\n", $file_destination);
                         }

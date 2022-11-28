@@ -22,13 +22,13 @@
                             <a href="index.php">Acceuil</a>
                         </li>
                         <li class="childrenLi">
-                            <a href="test.html">Envoyer le fichier CSV</a>
+                            <a href="./upload/fileCSV/index.php">Envoyer le fichier CSV</a>
                         </li>
                         <li class="childrenLi">
-                            <a href="">Envoyer le fichier Zip</a>
+                            <a href="./upload/fileFLAGS/index.php">Envoyer le fichier Zip</a>
                         </li>
                         <li class="childrenLi">
-                            <a href="">Liste des pays</a>
+                            <a href="./paysList/index.php">Liste des pays</a>
                         </li>
                         <li class="childrenLi">
                             <a href="">A propos du site</a>
@@ -41,28 +41,16 @@
     <main>
         <section>
             <div class="create_database">
-                <h2>Création de la base de données</h2>
-                <?php
-                // include_once("upload_file.php");
-                ?>
+                <h2><a href="http://Pays Project/bdd/creation_de_la_table_pays/index.php"> Création de la base de données</a></h2>
             </div>
             <div class="upload_flags">
                 <h2>Upload des drapeaux venant d'un fichier zip</h2>
-                <?php
-                // include_once("import_img.php");
-                ?>
             </div>
             <div class="search">
                 <h2>Rechercher un pays</h2>
-                <?php
-                // include_once("formulaire.html");
-                ?>
             </div>
             <div class="countries_array">
                 <h2>Liste des pays</h2>
-                <?php
-                // include_once("countries_array.php");
-                ?>
             </div>
         </section>
     </main>
